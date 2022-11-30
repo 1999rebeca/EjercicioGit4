@@ -1,5 +1,7 @@
 import java.util.Date;
 
+import java.util.Date;
+
 class Empleado {
     final String nombre;
     Date birthDate;
