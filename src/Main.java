@@ -1,12 +1,18 @@
 import java.util.Calendar;
 import java.util.Date;
+
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
 
         //Empleado p = new Empleado("Pepe Pérez", 31, new Date(90, Calendar.FEBRUARY, 1));
         //p.edad = -31; // Arreglado: error de compilación. edad no es accesible
+
         Empleado p = Empleado.crearEmpleado("Pepe Pérez", 31, new Date(90, Calendar.FEBRUARY, 1));
+        Empleado p = Empleado.crearEmpleado("Pepe Pérez", 31, LocalDate.of(2020, 1, 8));
         System.out.println(p);
+
         //p.nombre = "Manolo";
         //p.fechaContratacion = new Date(99, Calendar.FEBRUARY, 1);
         /*
@@ -24,6 +30,9 @@ public class Main {
         /* Además, Date es una clase de la primera versión de Java que solo almacena dos dígitos para años, de modo
         que al ponerle el año 10 pensando en 2010, nos encontraremos que no sabemos si se refiere a 1910. */
         System.out.println("Nueva fecha de contratación: " + p.getFechaContratacion().getYear());
+        /* Para el manejo de fechas, se debe utilizar LocalDate en lugar de Date.
+        LocalDate es inmutable y almacena años completos, además de otras muchas mejoras.  */
+        System.out.println("Año de contratación: " + p.getFechaContratacion().getYear());
 
     }
 }
