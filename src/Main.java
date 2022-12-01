@@ -21,5 +21,12 @@ public class Main {
          */
 
 
+<<<<<<< HEAD
+=======
+        p.nombre = "Manolo"; // Cambio de nombre. No se debe permitir
+        p.fechaContratacion = new Date(99, Calendar.FEBRUARY, 1); // Cambio de fecha. No se debe permitir
+        //p.nombre = "Manolo";
+        //p.fechaContratacion = new Date(99, Calendar.FEBRUARY, 1);
+>>>>>>> feat_inmutable_fields
     }
 }

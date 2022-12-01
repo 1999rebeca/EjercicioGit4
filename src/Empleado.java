@@ -1,10 +1,17 @@
 import java.util.Date;
 class Empleado {
     String nombre;
+<<<<<<< HEAD
     private int edad;
+=======
+    final String nombre;
+    int edad;
+>>>>>>> feat_inmutable_fields
     Date fechaContratacion;
+    final Date fechaContratacion;
 
     public Empleado(String nombre, int edad, Date fechaContratacion) {
+<<<<<<< HEAD
     private Empleado(String nombre, int edad, Date fechaContratacion) {
             this.nombre = nombre;
             this.edad = edad;
@@ -32,3 +39,14 @@ class Empleado {
         }
 
     }
+=======
+        this.nombre = nombre;
+        this.edad = edad;
+        this.fechaContratacion = fechaContratacion;
+    }
+    @Override
+    public String toString() {
+        return "Se ha registrado a " + nombre + " (" + edad + " años; contratado en 19" + fechaContratacion.getYear() + ")";
+    }
+}
+>>>>>>> feat_inmutable_fields
