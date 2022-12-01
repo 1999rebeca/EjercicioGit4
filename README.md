@@ -1,0 +1,143 @@
+1. Creamos una carpeta de trabajo con:
+
+    Dos carpetas (Ordenador1 y Ordenador2), que simularán dos equipos remotos.
+    Este README.md para ir editándolo y creando el registro de trabajo con capturas.
+    Una carpeta "img" para las imágenes que serán referenciadas desde el README
+	
+	(captura 1)
+	
+2. Creamos un repositorio vacío (sin README ni gitignore) en GitHub.
+
+	(captura2)
+	
+3. Creamos un proyecto de IntelliJ en Ordenador1 con repositorio de Git y código de ejemplo. 
+
+	(captura3)
+
+4. Creamos un nuevo README.md localmente (no el presente con el registro de trabajo, que se añadirá al final sustituyendo a ese.)
+
+	(captura4)
+
+5. Realizamos un primer commit y push de la base del proyecto.
+
+	(captura5)
+	(captura6)
+	
+6. Clonamos el proyecto dentro de Ordenador2 y lo abrimos.
+
+	(captura7)
+	
+7. Creamos una nueva funcionalidad, para lo cual creamos una rama "feat_persona" y la desarrollamos. 
+
+	(captura8)
+	(captura9)
+
+Una vez lista subimos la rama (``` git push feat_persona ```). Después, nos movemos a master para hacer un merge de "feat_persona" localmente.
+Al no haber nuevos commits en master, el merge debería ser automático y sin conflictos
+
+(captura10)
+
+8. Volvemos a Ordenador1. Recordamos el estado de nuestro proyecto en este ordenador haciendo un ``` git status ``` y un ``` git log ```.
+Si no nos indica que el master local está por detrás del remoto (origin/master), será necesario hacer un ```git fetch```.
+
+(captura11)
+
+9. Para poder seguir trabajando desde Ordenador1, deberíamos hacer antes de nada un pull para traernos el nuevo commit que tiene master en remoto. 
+Sin embargo, vamos a probar qué sucedería si nos olvidamos de ello.
+
+<!-- ☠☠☠☠ -->
+
+10. Desarrollamos una nueva funcionalidad "feat_empleado" en su correspondiente rama.
+
+	(captura 12)
+
+	i.Durante el desarrollo, antes de hacer el primer commit en feat_empleado, detectamos que el fichero .idea/workspace.xml cambia automáticamente
+	a menudo al abrir el proyecto en IntelliJ (es un archivo de metadatos de proyecto de IntelliJ).
+	
+	ii. Hacemos un primer commit para añadir .idea/workspace.xml al .gitignore.
+		Además, como los ficheros de ese directorio ya se han añadido previamente al repositorio, tendremos que eliminarlos de él haciendo:
+		``` git rm --cached .idea/workspace.xml ```
+		
+		(captura 13)
+		(captura 14)
+		
+	iii. Hacemos los otros 2 commits y pusheamos.
+	
+	(captura 15)
+	(captura 16)
+	(captura 17)
+	(captura 18)
+	
+	iv. Vemos todas las ramas que tenemos.
+	
+	``` Git branch -a ```
+	
+	(captura19)
+	
+	vi. Podríamos hacer un pull, que implicaría un merge de la rama remota a la rama local, como ya hemos visto, pero para hacerlo bien, vamos a eliminar los nuevos commits de master (siguen en feat_empleado, así que no se pierden).
+	Para ello, usamos un git reset --hard desde master, volviendo al último commit común al master remoto.
+	
+	(captura20)
+	
+	vii. Ahora sí podemos hacer un pull de master sin conflicto
+	
+		(captura 21)
+		
+	viii. Hacemos merge de la nueva rama local feat_empleado. Ahora sí tendremos conflicto.
+		
+		(captura 22)
+	
+	Solventamos los conflictos (en Main.java) y como realmente se está abordando la misma
+	funcionalidad, lo llevamos más allá y dejamos una versión funcional con lo que queremos
+	quedarnos de cada rama (ver en mi log)
+	
+	(captura 23)
+	
+	ix. Terminamos el merge con add y commit, y hacemos un push.
+	
+	(captura 24)
+	(captura 25)
+	
+11. Volvemos a Ordenador2 y comprobamos si tenemos todo al día con git status y git log.
+Si no nos indica que el master local está por detrás del remoto, será necesario hacer un git fetch, que ahora nos indicará que debemos hacer un pull.
+
+	(captura 26)
+	
+	No sé muy bien que hice pero creo que puse todo al día:
+	
+	(captura 27)
+	(captura 28)
+	(captura 29)
+	
+12. Ahora vamos a simular cómo se desarrollaría en paralelo en varias ramas (distintas personas).
+No crearemos carpetas que simulen ordenadores pero cada rama representará el trabajo independiente de cada componente del equipo de trabajo.
+
+	i. Creamos dos ramas desde master, que desarrollaremos sin hacer merge a master (simulando otro desarrollador trabajando en paralelo):
+	
+		a. "feat_inmutable_fields" para evitar que se pueda cambiar el nombre y la fecha de contratación
+		   de un empleado (asumimos que las especificaciones del proyecto lo impiden, sea o no razonable)
+		   
+			(captura30)
+			(captura32)
+			(captura33)
+		  
+		b. "bug_edad_negativa", para garantizar que la edad de un empleado no pueda ser negativa.
+		
+			(captura31)
+			(captura34)
+			
+		
+	ii. Una vez desarrolladas, hacemos el merge de ambas ramas a master solventando conflictos.
+	
+		(captura36)
+		(captura37)
+		
+
+13. Realizamos otras mejoras en la rama feat_deprecated_data_type para solucionar los problemas de la librería obsoleta java.util.Date, y los mergeamos.
+		
+		(captura42)
+		(captura41)
+		(captura35)
+		(captura38)
+		(captura39)
+		(captura40)
