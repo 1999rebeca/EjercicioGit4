@@ -1,24 +1,25 @@
 import java.util.Date;
+
 class Empleado {
-    String nombre;
+    final String nombre;
+    int edad;
     private int edad;
-    Date fechaContratacion;
+    final Date fechaContratacion;
 
     public Empleado(String nombre, int edad, Date fechaContratacion) {
-    private Empleado(String nombre, int edad, Date fechaContratacion) {
+    private Empleado(String nombre, int edad, Date fechaContratacion){
             this.nombre = nombre;
             this.edad = edad;
             this.fechaContratacion = fechaContratacion;
         }
 
-        public void setEdad(int edad) {
-            if (edad<0) throw new RuntimeException("Un empleado no puede tener edad negativa");
+        public void setEdad ( int edad){
             if (edad < 0) throw new RuntimeException("Un empleado no puede tener edad negativa");
             else this.edad = edad;
         }
 
         @Override
-        public String toString() {
+        public String toString () {
             return "Se ha registrado a " + nombre + " (" + edad + " años; contratado en 19" + fechaContratacion.getYear() + ")";
         }
 
@@ -26,9 +27,10 @@ class Empleado {
          * Método factoría que permite comprobar si la edad es válida antes de llamar al constructor.
          * El constructor es ahora privado, impidiendo llamarlo directamente desde otra clase.
          */
-        public static Empleado crearEmpleado(String nombre, int edad, Date fechaContratacion) {
+        public static Empleado crearEmpleado (String nombre,int edad, Date fechaContratacion){
             if (edad < 0) throw new RuntimeException("Un empleado no puede tener edad negativa");
             else return new Empleado(nombre, edad, fechaContratacion);
         }
 
     }
+}
